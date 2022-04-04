@@ -1,0 +1,28 @@
+help: Listing of the available commands.
+help <module>: Show the help menu of the selected module.
+jobs: List the running jobs of beacon.
+jobkill <id>: Kill selected job.
+run: Execute OS commands using Win32 API calls.
+shell: Execute OS commands by spawning "cmd.exe /c".
+powershell: Execute commands by spawning "powershell.exe"
+powershell-import: Import a local powershell module in the current beacon process.
+powerpick: Execute powershell commands without spawning "powershell.exe", using only .net libraries and assemblies. (Bypasses AMSI and CLM)
+drives: List current system drives.
+getuid: Get current user uid.
+sleep: Set the interval and jitter of beacon's call back.
+sleep Usage:
+sleep [time in seconds] [jitter]
+i.e.
+
+sleep 5 60
+sleep 120 40
+...
+ps: Listing processes.
+cd: Change directory.
+cp: Copy a local file on another local location.
+download/upload: Download a file and upload a local file.
+download/upload Usage:
+download C:\Users\Public\password.csv
+upload C:\Users\Public\test.txt
+cancel: Cancel a file download.
+reg: Query Registry.
